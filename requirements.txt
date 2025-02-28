@@ -1,0 +1,6 @@
+fastapi
+python-multipart
+uvicorn
+pymupdf==1.22.5
+ollama
+
