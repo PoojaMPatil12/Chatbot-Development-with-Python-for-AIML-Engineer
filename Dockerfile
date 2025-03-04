@@ -13,12 +13,9 @@ RUN apt-get update && \
     apt-get clean
 
 # Install Python dependencies
-RUN pip install --no-cache-dir fastapi uvicorn PyMuPDF ollama requests python-multipart
+RUN pip install --no-cache-dir fastapi uvicorn PyMuPDF requests python-multipart
 
-# Set the environment variable for Ollama URL
-#ENV OLLAMA_URL=http://127.0.0.1:11434
 
-# Expose the port the app runs on
 EXPOSE 8000
 
 # Run the app

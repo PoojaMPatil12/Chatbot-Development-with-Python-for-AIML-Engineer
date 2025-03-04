@@ -1,0 +1,40 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    entrypoint: >
+      /bin/sh -c "
+      /bin/ollama serve"
+    volumes:
+      - ollama-models:/root/.ollama/models
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://ollama:11434/api/tags"]
+      interval: 120s
+      timeout: 180s
+      retries: 2
+    networks:
+      - app-network
+
+  pdf-chatbot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pdf-chatbot
+    ports:
+      - "8000:8000"
+    environment:
+      - OLLAMA_MODEL_PATH=/root/.ollama/models
+    depends_on:
+      ollama:
+        condition: service_healthy
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  ollama-models:
