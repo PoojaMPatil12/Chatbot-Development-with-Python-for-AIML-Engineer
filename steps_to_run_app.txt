@@ -1,0 +1,14 @@
+Download the docker desktop and do the basic setup
+
+step1: docker compose up --build
+step2: docker exec -it ollama ollama pull deepseek-r1:1.5b
+step3: docker compose restart
+
+docker start $(docker ps -aq)  # start all dokers 
+
+docker exec -it ollama /bin/bash
+apt update && apt install -y curl # to update the curl
+ 
+docker compose down  # to stop container 
+docker compose up --build # to rebuild container 
+
