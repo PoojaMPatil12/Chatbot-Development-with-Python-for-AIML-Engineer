@@ -3,7 +3,7 @@ document.getElementById("upload-form").addEventListener("submit", async function
 
     const fileInput = document.getElementById("pdf-file");
     const userQuery = document.getElementById("user-query").value;
-    
+
     if (!fileInput.files.length) {
         alert("Please upload a PDF file.");
         return;
@@ -14,7 +14,7 @@ document.getElementById("upload-form").addEventListener("submit", async function
     formData.append("user_query", userQuery);
 
     try {
-        const response = await fetch("http://localhost:8000/upload/", {
+        const response = await fetch("/upload/", {
             method: "POST",
             body: formData
         });
