@@ -1,0 +1,1 @@
+This project involves developing a PDF-based chatbot using FastAPI, a modern Python web framework, to facilitate interactive querying of PDF documents. The system enables users to upload PDF files and pose questions, receiving responses derived from the content of the uploaded documents.
